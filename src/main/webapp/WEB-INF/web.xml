@@ -12,7 +12,7 @@
     </context-param>
     <context-param>
         <param-name>contextConfiguration</param-name>
-        <param-value>devFun.skyfly33.bookrest.config</param-value>
+        <param-value>devFun.skyfly33.common.config</param-value>
     </context-param>
 
     <filter>
