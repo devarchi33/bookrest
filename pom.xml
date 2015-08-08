@@ -23,6 +23,10 @@
 
         <!-- Servlet-->
         <version.servlet>2.5</version.servlet>
+
+        <!-- MyBatis-->
+        <version.mybatis>3.2.3</version.mybatis>
+        <version.mybatis.spring>1.2.1</version.mybatis.spring>
     </properties>
 
     <dependencies>
@@ -76,6 +80,12 @@
             </exclusions>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${version.spring}</version>
+        </dependency>
+
         <!-- SERVLET-->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -83,6 +93,40 @@
             <version>${version.servlet}</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- MyBatis-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${version.mybatis}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>${version.mybatis.spring}</version>
+        </dependency>
+
+        <!-- HSQLDB-->
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
+        <!-- DB Driver-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.31</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -94,8 +138,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>1.6</source>
+                    <target>1.6</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -115,7 +159,7 @@
                 <version>2.16</version>
                 <configuration>
                     <argLine>
-                        -Xms256m -Xmx512m -XX:MaxPermSize=128m -Dfile.encoding=UTF-8
+                        -Xms256m -Xmx512m -Dfile.encoding=UTF-8
                     </argLine>
                 </configuration>
             </plugin>
