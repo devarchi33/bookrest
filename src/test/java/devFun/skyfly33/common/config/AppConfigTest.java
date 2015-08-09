@@ -21,8 +21,8 @@ import java.sql.Statement;
 @ContextConfiguration(classes = {AppConfig.class})
 public class AppConfigTest {
 
-    @Autowired()
-    private DataSource ds;
+    @Autowired
+    private DataSource dataSourceForMysql;
 
     @Test
     public void testDBCPDataSource() {
@@ -32,11 +32,11 @@ public class AppConfigTest {
         ResultSet rs = null;
 
         try {
-            con = ds.getConnection();
+            con = dataSourceForMysql.getConnection();
             stmt = con.createStatement();
-            rs = stmt.executeQuery("select author, title from books");
+            rs = stmt.executeQuery("select creator, title from book");
             while (rs.next()) {
-                System.out.println("Book Author = " + rs.getString("author") + ", Title = " + rs.getString("title"));
+                System.out.println("Book Author = " + rs.getString("creator") + ", Title = " + rs.getString("title"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
