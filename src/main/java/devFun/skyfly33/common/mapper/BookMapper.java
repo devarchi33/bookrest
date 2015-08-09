@@ -1,6 +1,7 @@
 package devFun.skyfly33.common.mapper;
 
 import devFun.skyfly33.common.domain.Book;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -44,4 +45,7 @@ public interface BookMapper {
      * @return
      */
     int deleteByPrimaryKey(Long id);
+
+    @Delete("DELETE FROM BOOK")
+    int deleteAllBook();
 }
