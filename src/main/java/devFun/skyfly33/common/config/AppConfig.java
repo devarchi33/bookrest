@@ -12,6 +12,8 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
 import javax.sql.DataSource;
 
@@ -21,11 +23,11 @@ import javax.sql.DataSource;
  * database, transaction, ,DAO, service management config.
  */
 
-
+@EnableTransactionManagement
 @ImportResource({"classpath*:/mybatis/spring-mybatis.xml"})
 @MapperScan("devFun.skyfly33.common.mapper")
 @Configuration
-public class AppConfig {
+public class AppConfig implements TransactionManagementConfigurer {
 
     @Bean
     public DataSource dataSource() {
@@ -35,7 +37,7 @@ public class AppConfig {
                 .build();
     }
 
-    @Bean(destroyMethod = "close", name="dataSourceForMysql")
+    @Bean(destroyMethod = "close", name = "dataSourceForMysql")
     public DataSource dataSourceForMysql() {
         BasicDataSource dataSource = new BasicDataSource();
 
@@ -59,6 +61,11 @@ public class AppConfig {
     @Bean
     public PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSourceForMysql());
+    }
+
+    @Override
+    public PlatformTransactionManager annotationDrivenTransactionManager() {
+        return transactionManager();
     }
 
     @Bean
