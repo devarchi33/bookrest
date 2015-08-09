@@ -33,7 +33,7 @@ public class BookMapperTest {
     @Before
     public void setUpTest() {
 //        Book Table init.
-        bookMapper.deleteAllBook();
+        bookMapper.deleteAllBooks();
         List<Book> initBooks = bookMapper.select();
         assertEquals(0, initBooks.size());
 //        Book Table Sample Data Insert.

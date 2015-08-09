@@ -46,6 +46,10 @@ public interface BookMapper {
      */
     int deleteByPrimaryKey(Long id);
 
+    /**
+     * 단위 테스트를 위한 Book Table 초기화 작업을 한다.
+     * @return
+     */
     @Delete("DELETE FROM BOOK")
-    int deleteAllBook();
+    int deleteAllBooks();
 }
