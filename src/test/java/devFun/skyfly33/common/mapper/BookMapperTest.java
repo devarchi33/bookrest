@@ -58,7 +58,7 @@ public class BookMapperTest {
         List<Book> bookList = bookMapper.select();
         assertEquals(3, bookList.size());
         for (Book book : bookList) {
-            logger.info("book = {}", book);
+            logger.info("Book = {}", book);
         }
 
         Book newBook = new Book(10L, "스칼라 프로그래밍", "케이 호스트만", "프로그래밍 언어", new Date());
@@ -66,19 +66,19 @@ public class BookMapperTest {
         bookMapper.insert(newBook);
         bookList = bookMapper.select();
         assertEquals(4, bookList.size());
-
         Book selectedBook = bookMapper.selectByPrimaryKey(10L);
-        logger.info("i.selectBook = {}", selectedBook);
+        logger.info("After insert query selectBook = {}", selectedBook);
         assertEquals(newBook.getCreator(), selectedBook.getCreator());
 
         newBook.setCreator("이동훈");
         bookMapper.updateByPrimaryKey(newBook);
         selectedBook = bookMapper.selectByPrimaryKey(10L);
+        logger.info("After update query selectedBook = {}", selectedBook);
         assertEquals("이동훈", selectedBook.getCreator());
 
         bookMapper.deleteByPrimaryKey(1L);
         selectedBook = bookMapper.selectByPrimaryKey(1L);
+        logger.info("After delete query selectedBook = {}", selectedBook);
         assertNull(selectedBook);
     }
-
 }
