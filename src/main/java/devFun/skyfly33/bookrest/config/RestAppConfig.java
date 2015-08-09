@@ -2,7 +2,10 @@ package devFun.skyfly33.bookrest.config;
 
 import devFun.skyfly33.common.domain.Book;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.Date;
 
@@ -11,6 +14,9 @@ import java.util.Date;
  */
 
 @Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = {"devFun.skyfly33.bookrest.controller"},
+        useDefaultFilters = false, includeFilters = {@ComponentScan.Filter(Controller.class)})
 public class RestAppConfig {
 
     @Bean
