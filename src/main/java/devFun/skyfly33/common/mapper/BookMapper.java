@@ -1,16 +1,18 @@
 package devFun.skyfly33.common.mapper;
 
 import devFun.skyfly33.common.domain.Book;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by donghoon on 15. 8. 8..
  */
+@Repository("bookMapper")
 public interface BookMapper {
 
     /**
-     * 도서 정보 목록으 조회한다.
+     * 도서 정보 목록으로 조회한다.
      * @return
      */
     List<Book> select();

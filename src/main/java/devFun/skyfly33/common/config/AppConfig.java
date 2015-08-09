@@ -1,5 +1,7 @@
 package devFun.skyfly33.common.config;
 
+import devFun.skyfly33.common.domain.Book;
+import devFun.skyfly33.common.mapper.BookMapper;
 import devFun.skyfly33.common.utils.Config;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -7,19 +9,25 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 /**
  * Created by donghoon on 15. 8. 8..
- *
+ * <p>
  * database, transaction, ,DAO, service management config.
  */
 
+
+@ImportResource({"classpath*:/mybatis/spring-mybatis.xml"})
 @MapperScan("devFun.skyfly33.common.mapper")
 @Configuration
 public class AppConfig {
@@ -62,8 +70,9 @@ public class AppConfig {
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(dataSourceForMysql());
+//        Resource[] mapperLocations = new Resource[2];
+//        mapperLocations[0] = new ClassPathResource("devFun.skyfly33.common.mapper.BookMapper");
+//        sessionFactory.setMapperLocations(mapperLocations);
         return sessionFactory.getObject();
     }
-
-
 }
