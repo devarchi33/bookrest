@@ -1,5 +1,7 @@
 package devFun.skyfly33.common.config;
 
+import devFun.skyfly33.common.domain.Book;
+import devFun.skyfly33.common.mapper.BookMapper;
 import devFun.skyfly33.common.utils.Config;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -8,12 +10,15 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 /**
  * Created by donghoon on 15. 8. 8..
@@ -27,15 +32,15 @@ import javax.sql.DataSource;
 @Configuration
 public class AppConfig {
 
-    @Bean
-    public DataSource dataSource() {
-        return new EmbeddedDatabaseBuilder()
-                .setName("testdb")
-                .setType(EmbeddedDatabaseType.HSQL)
-                .build();
-    }
+//    @Bean
+//    public DataSource dataSource() {
+//        return new EmbeddedDatabaseBuilder()
+//                .setName("testdb")
+//                .setType(EmbeddedDatabaseType.HSQL)
+//                .build();
+//    }
 
-    @Bean(destroyMethod = "close", name="dataSourceForMysql")
+    @Bean(destroyMethod = "close")
     public DataSource dataSourceForMysql() {
         BasicDataSource dataSource = new BasicDataSource();
 
