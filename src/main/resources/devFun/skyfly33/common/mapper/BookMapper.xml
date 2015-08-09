@@ -36,7 +36,7 @@
     </insert>
 
     <!-- 도서 정보 수정 -->
-    <update id="update" parameterType="devFun.skyfly33.common.domain.Book">
+    <update id="updateByPrimaryKey" parameterType="devFun.skyfly33.common.domain.Book">
         UPDATE BOOK
         SET TITLE = #{title, jdbcType=VARCHAR},
         CREATOR = #{creator, jdbcType=VARCHAR},
@@ -46,7 +46,7 @@
     </update>
 
     <!-- 도서 정보 삭제 -->
-    <delete id="delete" parameterType="java.lang.Long">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         DELETE FROM BOOK
         WHERE ID = #{id, jdbcType=BIGINT}
     </delete>
