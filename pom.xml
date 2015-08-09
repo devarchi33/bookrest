@@ -22,7 +22,7 @@
         <version.spring>4.1.1.RELEASE</version.spring>
 
         <!-- Servlet-->
-        <version.servlet>2.5</version.servlet>
+        <version.servlet>3.1.0</version.servlet>
 
         <!-- MyBatis-->
         <version.mybatis>3.2.3</version.mybatis>
@@ -89,7 +89,7 @@
         <!-- SERVLET-->
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
+            <artifactId>javax.servlet-api</artifactId>
             <version>${version.servlet}</version>
             <scope>provided</scope>
         </dependency>
